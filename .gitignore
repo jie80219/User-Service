@@ -33,3 +33,7 @@ app/writable/uploads/*
 .vscode/
 .claude/
 *.swp
+
+# Vault AppRole credentials — distributed at runtime, never committed
+docker/vault-pki/creds/*
+!docker/vault-pki/creds/.gitkeep

@@ -1,0 +1,60 @@
+{
+    "name": "jie80219/php-lsvid",
+    "description": "LSVID (Lightweight SVID) — nested JWS chain signing, validation, and PSR-15 middleware for SPIFFE workload identity.",
+    "type": "library",
+    "license": "Apache-2.0",
+    "keywords": [
+        "spiffe",
+        "lsvid",
+        "jws",
+        "zero-trust",
+        "workload-identity",
+        "mtls",
+        "nested-token"
+    ],
+    "homepage": "https://github.com/jie80219/php-lsvid",
+
+    "require": {
+        "php": "^8.1",
+        "ext-openssl": "*",
+        "ext-json": "*"
+    },
+
+    "require-dev": {
+        "phpunit/phpunit": "^10.5 || ^11.0",
+        "psr/http-server-middleware": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0",
+        "psr/http-factory": "^1.0"
+    },
+
+    "suggest": {
+        "psr/http-server-middleware": "Required for the PSR-15 LSVIDMiddleware",
+        "psr/http-factory": "Required for LSVIDMiddleware response creation"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "SDPMlab\\LSVID\\": "src/LSVID/"
+        }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "SDPMlab\\LSVID\\Tests\\": "tests/LSVID/"
+        }
+    },
+
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    },
+
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

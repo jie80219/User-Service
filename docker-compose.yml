@@ -12,8 +12,8 @@ services:
         environment:
             - VAULT_ADDR=${VAULT_ADDR:-http://vault:8200}
         volumes:
-            - ../../docker/vault-pki/agent/user-svc.hcl:/vault/config.hcl:ro
-            - ../../docker/vault-pki/creds:/vault/creds:ro
+            - ./docker/vault-pki/agent/user-svc.hcl:/vault/config.hcl:ro
+            - ./docker/vault-pki/creds:/vault/creds:ro
             - user-svc-vault-out:/vault/out
         restart: unless-stopped
         networks:
@@ -38,7 +38,7 @@ services:
         volumes:
             - './app:/app'
             # Bind packages/ so vendor/jie80219/php-lsvid symlink resolves.
-            - '../../packages:/packages:ro'
+            - './packages:/packages:ro'
             - user-svc-vault-out:/vault/out:ro
         command: >
             bash -c "until [ -s /vault/out/tls.crt ]; do echo '[user-service] waiting for /vault/out/tls.crt ...'; sleep 0.2; done; chmod 776 ./start_service.sh && ./start_service.sh"
