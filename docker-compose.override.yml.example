@@ -1,0 +1,18 @@
+# Per-host override — copy to docker-compose.override.yml and adjust
+# <gateway-host-LAN-IP> for multi-host SPIRE deployments.
+#
+# AppArmor:unconfined is required on Proxmox / hosts whose default
+# AppArmor profile blocks Unix-socket bind (SPIRE Agent + PostgreSQL)
+# and Unix-socket dial (spiffe-helper).
+services:
+  spire-agent:
+    extra_hosts:
+      - "zt-spire-server:<gateway-host-LAN-IP>"
+    security_opt:
+      - apparmor:unconfined
+  user-helper:
+    security_opt:
+      - apparmor:unconfined
+  user_DB:
+    security_opt:
+      - apparmor:unconfined
